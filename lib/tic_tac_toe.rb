@@ -87,11 +87,14 @@ end
 #  counter = 0
 #  board.each do |field|
 #    if field == "X" || field == "0"
-#      counter++
+#       counter++
 #    end
 #  end
-#  return counter
 #end
+
+def turn_count(board)
+  board.count{|token| token == "X" || token == "O"}
+end
 
 def current_player(board)
   turn = ""
