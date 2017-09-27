@@ -73,7 +73,7 @@ end
 def turn(board)
   puts "Please make your move (X, 1 - 9)"
 
-  move = gets.strip
+  move = gets.strip.to_i
   if valid_move?(board, move)
     move(board, move - 1, "X")
   else
