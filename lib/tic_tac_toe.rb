@@ -113,7 +113,7 @@ end
 ####play
 
 def play(board)
-  while !won?(board) || !full?(board)
+  while !won?(board) && !full?(board)
     turn(board)
   end
 
