@@ -73,7 +73,7 @@ end
 
 def turn(board)
   player = current_player(board)
-  puts "Please make your move (${player}, 1 - 9)"
+  puts "Please make your move (#{player}, 1 - 9)"
 
   move = gets.strip.to_i
   if valid_move?(board, move)
@@ -97,19 +97,30 @@ def turn_count(board)
   board.count{|token| token == "X" || token == "O"}
 end
 
+#def current_player(board)
+#  if turn_count(board) % 2 == 0
+#    turn = "0"
+#  else
+#    turn = "X"
+#  end
+#  return turn
+#end
+
 def current_player(board)
-  if turn_count(board) % 2 == 0
-    turn = "0"
-  else
-    turn = "X"
-  end
-  return turn
+  turn_count(board) % 2 == 0 ? "X" : "O"
 end
 
 ####play
 
-def play
+def play(board)
   while !won?(board) || !full?(board)
     turn(board)
+  end
+
+  if won?(board)
+    winner = winner(board)
+    puts "Congrats #{winner}"
+  elsif draw?
+    puts "It's a draw!"
   end
 end
