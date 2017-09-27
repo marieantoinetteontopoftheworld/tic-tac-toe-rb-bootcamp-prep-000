@@ -77,7 +77,8 @@ def turn(board)
   if valid_move?(board, move)
     move(board, move - 1, "X")
   else
-    turn
+    puts "Go again:"
+    turn(board)
   end
 end
 
