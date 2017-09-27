@@ -25,10 +25,14 @@ def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
 end
 
-def valid_move?(board, move)
-  index = move - 1
+#def valid_move?(board, move)
+#  index = move - 1
+#
+#  index >= 0 && index < 9 && !position_taken?(board, index)
+#end
 
-  index >= 0 && index < 9 && !position_taken?(board, index)
+def valid_move?(board, index)
+  index.between?(0,8) && !position_taken?(board, index)
 end
 
 ####checks
@@ -58,13 +62,13 @@ def over?(board)
   won?(board) || full?(board) #draw?(board) not necessary
 end
 
-####moves
-
 def winner(board)
   if winning_combo = won?(board)
     board[winning_combo[0]]
   end
 end
+
+####moves
 
 def move(board, index, player)
   board[index] = player
@@ -119,7 +123,7 @@ def play(board)
 
   if won?(board)
     winner = winner(board)
-    puts "Congrats #{winner}"
+    puts "Congrats #{winner}! You got three in a row"
   elsif draw?
     puts "It's a draw!"
   end
