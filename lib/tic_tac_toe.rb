@@ -72,11 +72,12 @@ def move(board, index, player)
 end
 
 def turn(board)
-  puts "Please make your move (X, 1 - 9)"
+  player = current_player(board)
+  puts "Please make your move (${player}, 1 - 9)"
 
   move = gets.strip.to_i
   if valid_move?(board, move)
-    move(board, move - 1, "X")
+    move(board, move - 1, player)
   else
     puts "Go again:"
     turn(board)
@@ -97,10 +98,18 @@ def turn_count(board)
 end
 
 def current_player(board)
-  turn = ""
   if turn_count(board) % 2 == 0
     turn = "0"
   else
     turn = "X"
+  end
+  return turn
+end
+
+####play
+
+def play
+  while !won?(board) || !full?(board)
+    turn(board)
   end
 end
