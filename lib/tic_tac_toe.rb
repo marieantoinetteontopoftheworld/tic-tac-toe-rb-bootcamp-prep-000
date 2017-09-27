@@ -67,7 +67,8 @@ def winner(board)
 end
 
 def move(board, index, player)
-  board[index] = "${player}"
+  board[index] = player
+  display_board(board)
 end
 
 def turn(board)
