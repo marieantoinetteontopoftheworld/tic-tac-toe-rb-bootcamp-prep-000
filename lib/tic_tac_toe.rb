@@ -68,14 +68,13 @@ end
 
 def move(board, index, player)
   board[index] = "${player}"
-
 end
 
-def turn
+def turn(board)
   puts "Please make your move (X, 1 - 9)"
 
   move = gets.strip
-  if valid_move?(move)
+  if valid_move?(board, move)
     move(board, move - 1, "X")
   else
     turn
