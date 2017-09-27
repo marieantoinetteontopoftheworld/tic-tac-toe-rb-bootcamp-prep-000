@@ -80,7 +80,7 @@ def turn(board)
   puts "Please make your move (#{player}, 1 - 9)"
 
   move = gets.strip.to_i
-  if valid_move?(board, move)
+  if valid_move?(board, move - 1)
     move(board, move - 1, player)
   else
     puts "Go again:"
